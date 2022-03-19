@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
 
 namespace SuggestionAppUI;
 
@@ -9,8 +10,9 @@ public static class RegisterServices
     {
         // Add services to the container.
         builder.Services.AddRazorPages();
-        builder.Services.AddServerSideBlazor();
+        builder.Services.AddServerSideBlazor().AddMicrosoftIdentityConsentHandler();
         builder.Services.AddMemoryCache();
+        builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
 
         // Add DI for Authentication and Authorization
         builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
