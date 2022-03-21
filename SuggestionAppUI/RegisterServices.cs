@@ -6,6 +6,10 @@ namespace SuggestionAppUI;
 
 public static class RegisterServices
 {
+    /// <summary>
+    /// An extension method for extending the DI services
+    /// </summary>
+    /// <param name="builder"></param>
     public static void ConfigureServices(this WebApplicationBuilder builder)
     {
         // Add services to the container.

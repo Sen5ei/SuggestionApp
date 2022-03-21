@@ -92,6 +92,7 @@
     private string searchText = "";
     bool isSortedByNew = true;
 
+    // Loading data
     protected async override Task OnInitializedAsync()
     {
         categories = await categoryData.GetAllCategories();
@@ -99,12 +100,16 @@
         await LoadAndVerifyUser();
     }
 
+    // Runs after the page gets rendered
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
+        // Session storage is only available here
         if (firstRender)
         {
+            // Methods that will run the first time it is rendered
             await LoadFilterState();
             await FilterSuggestions();
+            // Tells Blazor that it can update the page as the state has changed
             StateHasChanged();
         }
     }
@@ -123,7 +128,9 @@
             string displayName = authState.User.Claims.FirstOrDefault(c => c.Type.Equals("name"))?.Value;
             string email = authState.User.Claims.FirstOrDefault(c => c.Type.Contains("email"))?.Value;
 
+            // A flag for checking if data is updated or being created for the first time
             bool isDirty = false;
+
             if (objectId.Equals(loggedInUser.ObjectIdentifier) == false)
             {
                 isDirty = true;
@@ -149,8 +156,11 @@
                 isDirty = true;
                 loggedInUser.EmailAddress = email;
             }
+
+            // If it's modified/updated
             if (isDirty)
             {
+                // If MongoDb ID is not present
                 if (string.IsNullOrWhiteSpace(loggedInUser.Id))
                 {
                     await userData.CreateUser(loggedInUser);
@@ -165,6 +175,7 @@
 
     private async Task LoadFilterState()
     {
+        // Get filter state from our local storage from browser
         var stringResults = await sessionStorage.GetAsync<string>(nameof(selectedCategory));
         selectedCategory = stringResults.Success ? stringResults.Value : "All";
 
@@ -257,15 +268,18 @@
                 return;
             }
 
+            // UserVotes is a HashSet and can't have duplicate values
             if (suggestion.UserVotes.Add(loggedInUser.Id) == false)
             {
                 suggestion.UserVotes.Remove(loggedInUser.Id);
             }
 
+            // Update to database
             await suggestionData.UpvoteSuggestion(suggestion.Id, loggedInUser.Id);
 
             if (isSortedByNew == false)
             {
+                // Update the list items order shown on the page after the Upvote
                 suggestions = suggestions.OrderByDescending(s => s.UserVotes.Count)
                                          .ThenByDescending(s => s.DateCreated).ToList();
             }

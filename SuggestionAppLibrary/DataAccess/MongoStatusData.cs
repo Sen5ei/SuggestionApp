@@ -13,6 +13,10 @@ public class MongoStatusData : IStatusData
         _statuses = db.StatusCollection;
     }
 
+    /// <summary>
+    /// A method for getting all statuses
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<StatusModel>> GetAllStatuses()
     {
         var output = _cache.Get<List<StatusModel>>(CacheName);
@@ -27,6 +31,11 @@ public class MongoStatusData : IStatusData
         return output;
     }
 
+    /// <summary>
+    /// A method for creating a status
+    /// </summary>
+    /// <param name="status"></param>
+    /// <returns></returns>
     public Task CreateStatus(StatusModel status)
     {
         return _statuses.InsertOneAsync(status);

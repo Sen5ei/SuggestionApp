@@ -63,6 +63,7 @@
 
     protected async override Task OnInitializedAsync()
     {
+        // Get data of the suggestion that was selected
         suggestion = await suggestionData.GetSuggestion(Id);
         loggedInUser = await authProvider.GetUserFromAuth(userData);
     }
@@ -113,11 +114,13 @@
                 return;
             }
 
+            // UserVotes is a HashSet and can't have duplicate values
             if (suggestion.UserVotes.Add(loggedInUser.Id) == false)
             {
                 suggestion.UserVotes.Remove(loggedInUser.Id);
             }
 
+            // Update to database
             await suggestionData.UpvoteSuggestion(suggestion.Id, loggedInUser.Id);
         }
         else

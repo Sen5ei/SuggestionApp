@@ -93,6 +93,7 @@
     private async Task ApproveSubmission(SuggestionModel submission)
     {
         submission.ApprovedForRelease = true;
+        // Remove from a local copy of list
         submissions.Remove(submission);
         await suggestionData.UpdateSuggestion(submission);
     }
