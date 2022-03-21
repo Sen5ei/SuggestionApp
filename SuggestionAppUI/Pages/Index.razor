@@ -323,7 +323,7 @@
 
     private string GetUpvoteBottomText(SuggestionModel suggestion)
     {
-        if (suggestion.UserVotes?.Count < 1)
+        if (suggestion.UserVotes?.Count > 1)
         {
             return "Upvotes";
         }
