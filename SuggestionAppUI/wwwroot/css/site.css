@@ -137,9 +137,9 @@ a:hover, btn-link:hover {
     font-weight: 700;
 }
 
-.sort-selected:hover {
-    color: #000000;
-}
+    .sort-selected:hover {
+        color: #000000;
+    }
 
 .search-box {
     --bs-gutter-x: 3.5rem;
@@ -160,9 +160,9 @@ a:hover, btn-link:hover {
     margin-top: 1rem;
 }
 
-.categories div:hover {
-    cursor: pointer;
-}
+    .categories div:hover {
+        cursor: pointer;
+    }
 
 .selected-category {
     font-weight: 700;
@@ -179,9 +179,9 @@ a:hover, btn-link:hover {
     margin-top: 1rem;
 }
 
-.statuses div:hover {
-    cursor: pointer;
-}
+    .statuses div:hover {
+        cursor: pointer;
+    }
 
 .selected-status {
     font-weight: 700;
@@ -321,16 +321,16 @@ a:hover, btn-link:hover {
     padding: 2rem;
 }
 
-.form-layout a {
-    font-weight: 700;
-    color: #39BAD8;
-}
+    .form-layout a {
+        font-weight: 700;
+        color: #39BAD8;
+    }
 
-.form-layout a:hover {
-    font-weight: 700;
-    color: #39BAD8;
-    text-decoration: underline;
-}
+        .form-layout a:hover {
+            font-weight: 700;
+            color: #39BAD8;
+            text-decoration: underline;
+        }
 
 .close-button-section {
     display: flex;
@@ -385,12 +385,12 @@ a:hover, btn-link:hover {
     border-width: 3px;
 }
 
-.btn-main:hover {
-    color: #39BAD8;
-    border-color: #39BAD8;
-    background-color: #FFFFFF;
-    border-width: 3px;
-}
+    .btn-main:hover {
+        color: #39BAD8;
+        border-color: #39BAD8;
+        background-color: #FFFFFF;
+        border-width: 3px;
+    }
 
 .suggestion-detail-row {
     --bs-gutter-x: 0;
@@ -510,3 +510,76 @@ a:hover, btn-link:hover {
 .suggestion-detail-owner-notes {
     padding-bottom: 20px;
 }
+
+.submission {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn-approve,
+.btn-reject {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    border-width: 3px;
+}
+
+.btn-approve {
+    color: #FFFFFF;
+    background-color: #B5D43A;
+    border-color: #FFFFFF;
+}
+
+    .btn-approve:hover {
+        color: #B5D43A;
+        border-color: #B5D43A;
+        background-color: #FFFFFF;
+    }
+
+.btn-reject {
+    color: #FFFFFF;
+    background-color: #E9354C;
+    border-color: #FFFFFF;
+}
+
+    .btn-reject:hover {
+        color: #E9354C;
+        border-color: #E9354C;
+        background-color: #FFFFFF;
+    }
+
+.approval-edit-form {
+    display: flex;
+}
+
+.approval-edit-field {
+    flex: 1;
+    border-radius: 10px;
+}
+
+.submission-edit-approve {
+    color: #B5D43A;
+}
+
+    .submission-edit-approve:hover {
+        font-weight: 700;
+    }
+
+.submission-edit-reject {
+    color: #E9354C;
+}
+
+    .submission-edit-reject:hover {
+        font-weight: 700;
+    }
+
+.submission-edit-icon {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+    .submission-edit-icon:hover {
+        color: #39BAD8;
+    }
